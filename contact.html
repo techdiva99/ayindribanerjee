@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Ayindri Banerjee</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+    :root{--pink:#ff67c7;--blue:#0aabde;--ink:#1a1a2e;--muted:#5a5a72;--light:#f8f6fa}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Outfit',sans-serif;background:var(--light);color:var(--ink);padding:32px 16px}
+    .wrap{max-width:760px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+    .eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    h1{font-family:'Cormorant Garamond',serif;font-size:42px;line-height:1.1;margin-bottom:10px}
+    .sub{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:24px}
+    form{display:grid;gap:14px}
+    label{font-size:13px;font-weight:600;color:var(--ink)}
+    input,textarea{width:100%;margin-top:6px;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font:inherit}
+    textarea{min-height:140px;resize:vertical}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:28px;border:0;text-decoration:none;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+    .btn-primary{background:var(--pink);color:#fff}
+    .btn-secondary{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+    .btn:hover{transform:translateY(-1px)}
+    .panel{margin-top:24px;padding:18px;border-radius:12px;background:#f2fbff;border:1px solid rgba(10,171,222,.2)}
+    .panel h2{font-size:20px;font-family:'Cormorant Garamond',serif;margin-bottom:8px}
+    .panel p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:12px}
+    .small{margin-top:14px;font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h1>Contact Ayindri</h1>
+    <p class="sub">Send a message for speaking inquiries, workshops, or collaborations. Submitting this form opens your default email app addressed to aischool@techdiva.io.</p>
+
+    <form id="contactForm">
+      <label for="name">Name
+        <input id="name" name="name" type="text" required>
+      </label>
+
+      <label for="email">Email
+        <input id="email" name="email" type="email" required>
+      </label>
+
+      <label for="city">City (optional)
+        <input id="city" name="city" type="text">
+      </label>
+
+      <label for="state">State (optional)
+        <input id="state" name="state" type="text">
+      </label>
+
+      <label for="message">Message
+        <textarea id="message" name="message" required></textarea>
+      </label>
+
+      <div class="actions">
+        <button class="btn btn-primary" type="submit">Send Message</button>
+        <a class="btn btn-secondary" href="index.html">Back to Speaker Page</a>
+      </div>
+    </form>
+
+    <section class="panel">
+      <h2>Optional: Schedule a speaking call</h2>
+      <p>If you prefer, use calendar scheduling to propose a time for a speaking-event discussion.</p>
+      <a class="btn btn-secondary" href="https://calendar.google.com/calendar/u/0/r/eventedit?text=Speaking+Inquiry+with+Ayindri+Banerjee&add=aischool%40techdiva.io" target="_blank" rel="noopener noreferrer">Open Calendar</a>
+      <p class="small">Tip: this opens Google Calendar event creation with your email prefilled as an invitee.</p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const state = document.getElementById('state').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const location = [city, state].filter(Boolean).join(', ');
+
+      const subject = encodeURIComponent('Website inquiry from ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n\n' +
+        (location ? 'Event Location: ' + location + '\n\n' : '') +
+        'Message:\n' + message
+      );
+
+      window.location.href = 'mailto:aischool@techdiva.io?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
