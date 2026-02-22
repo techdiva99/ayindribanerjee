@@ -51,6 +51,18 @@
         <input id="state" name="state" type="text">
       </label>
 
+      <label>Event Type</label>
+      <div class="actions" style="margin-top:0;">
+        <label for="eventTypeVirtual" style="display:flex;align-items:center;gap:8px;font-weight:500;">
+          <input id="eventTypeVirtual" name="eventType" type="radio" value="Virtual" checked>
+          Virtual
+        </label>
+        <label for="eventTypeInPerson" style="display:flex;align-items:center;gap:8px;font-weight:500;">
+          <input id="eventTypeInPerson" name="eventType" type="radio" value="In-person">
+          In-person
+        </label>
+      </div>
+
       <label for="message">Message
         <textarea id="message" name="message" required></textarea>
       </label>
@@ -79,6 +91,7 @@
       const email = document.getElementById('email').value.trim();
       const city = document.getElementById('city').value.trim();
       const state = document.getElementById('state').value.trim();
+      const eventType = document.querySelector('input[name="eventType"]:checked').value;
       const message = document.getElementById('message').value.trim();
       const location = [city, state].filter(Boolean).join(', ');
 
@@ -86,6 +99,7 @@
       const body = encodeURIComponent(
         'Name: ' + name + '\n' +
         'Email: ' + email + '\n\n' +
+        'Event Type: ' + eventType + '\n' +
         (location ? 'Event Location: ' + location + '\n\n' : '') +
         'Message:\n' + message
       );
