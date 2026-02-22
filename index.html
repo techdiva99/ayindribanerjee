@@ -307,11 +307,12 @@
   </div>
   <div class="newsletter-wrap">
     <div class="newsletter-title">Subscribe to Newsletter</div>
-    <form class="newsletter-form" action="https://script.google.com/macros/s/AKfycbyvIAKfYZFlyenv8PSCw8OJ3QEmtwCU2kA93pKkhYyM5l1KtI3uRn5GSjKXqJpMnSQIpQ/exec" method="post">
+    <form id="newsletterForm" class="newsletter-form" action="https://script.google.com/macros/s/AKfycbyvIAKfYZFlyenv8PSCw8OJ3QEmtwCU2kA93pKkhYyM5l1KtI3uRn5GSjKXqJpMnSQIpQ/exec" method="post" target="newsletterSubmitFrame">
       <input class="newsletter-input" type="email" name="email" placeholder="Enter your email address" required>
       <button class="newsletter-button" type="submit">Subscribe</button>
     </form>
-    <div class="newsletter-note">Connect this form to Google Apps Script to save subscribers in your Google Drive list.</div>
+    <iframe name="newsletterSubmitFrame" style="display:none;"></iframe>
+    <div id="newsletterStatus" class="newsletter-note" aria-live="polite"></div>
   </div>
 </section>
 
@@ -319,5 +320,18 @@
   <div>Ayindri Banerjee — Patient & Clinician First AI Leadership</div>
   <div>© 2026 Ayindri Banerjee. All rights reserved.</div>
 </footer>
+<script>
+  const newsletterForm = document.getElementById('newsletterForm');
+  const newsletterStatus = document.getElementById('newsletterStatus');
+
+  if (newsletterForm && newsletterStatus) {
+    newsletterForm.addEventListener('submit', function () {
+      newsletterStatus.textContent = 'Thank you — you are subscribed.';
+      setTimeout(function () {
+        newsletterForm.reset();
+      }, 150);
+    });
+  }
+</script>
 </body>
 </html>
