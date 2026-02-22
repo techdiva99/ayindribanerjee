@@ -147,9 +147,50 @@
   .amazon-btn{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:16px;background:#ff9900;color:#111 !important;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;vertical-align:middle}
   .amazon-btn:hover{background:#f08a00}
   .amazon-btn svg{width:12px;height:12px;fill:currentColor;display:block}
+  @media (max-width:1024px){
+    .hero{padding:90px 36px 56px}
+    .hero-inner{gap:44px}
+    .photo-ring{width:280px;height:280px}
+    h1{font-size:46px}
+    .hero-subtitle{font-size:21px}
+    .topics,.talks,.ideal,.contact{padding-left:36px;padding-right:36px}
+    .topic-grid{grid-template-columns:repeat(2,1fr)}
+    .ideal{gap:36px}
+  }
   @media (max-width:768px){
+    .hero{min-height:auto;padding:84px 20px 44px}
+    .hero-inner{flex-direction:column;gap:24px;align-items:flex-start}
+    .photo-container{align-self:center}
+    .photo-ring{width:230px;height:230px}
+    .photo-badge{right:0}
+    h1{font-size:38px}
+    .hero-subtitle{font-size:19px;margin-bottom:18px}
+    .hero-bio{font-size:15px;margin-bottom:14px}
+    .cta-row{margin-top:18px;flex-wrap:wrap}
+    .cta-primary,.cta-secondary{padding:12px 20px;font-size:12px}
+    .cred-bar{padding:24px 20px;gap:20px}
+    .cred-num{font-size:32px}
+    .topics,.talks,.ideal,.contact{padding:52px 20px}
+    .section-title{font-size:32px;margin-bottom:30px}
+    .topic-grid{grid-template-columns:1fr;gap:16px}
+    .topic-card{padding:24px 20px}
+    .talk-item{flex-direction:column;gap:12px;padding:22px 18px}
+    .talk-num{width:auto;font-size:36px}
+    .talk-title{font-size:21px}
+    .ideal{flex-direction:column;gap:28px}
+    .ideal-list li{align-items:flex-start}
+    .contact h2{font-size:34px}
+    .contact p{font-size:15px;margin-bottom:20px}
+    .newsletter-input{min-width:100%;max-width:100%}
+    footer{padding:16px 20px;flex-direction:column;gap:8px;text-align:center}
     .amazon-btn{padding:6px 12px;font-size:12px;border-radius:18px}
     .amazon-btn svg{width:14px;height:14px}
+  }
+  @media (max-width:480px){
+    h1{font-size:33px}
+    .hero-subtitle{font-size:17px}
+    .section-title{font-size:28px}
+    .contact h2{font-size:30px}
   }
 
   footer{background:var(--pink);padding:20px 60px;display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:12px;font-weight:600}
