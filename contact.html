@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Ayindri Banerjee</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1HCBV2XRR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K1HCBV2XRR');
+  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
     :root{--pink:#ff67c7;--blue:#0aabde;--ink:#1a1a2e;--muted:#5a5a72;--light:#f8f6fa}
@@ -84,6 +91,34 @@
   <script>
     const form = document.getElementById('contactForm');
 
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('a[href]');
+      if (!link || typeof gtag !== 'function') return;
+
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      const linkText = (link.textContent || '').trim();
+      const isExternal = /^https?:\/\//i.test(href);
+      const isMailto = href.startsWith('mailto:');
+
+      if (href === 'index.html') {
+        gtag('event', 'back_to_speaker_click', {
+          page_location: 'contact',
+          link_text: linkText,
+          link_url: href
+        });
+      }
+
+      if (isExternal || isMailto) {
+        gtag('event', 'outbound_click', {
+          page_location: 'contact',
+          link_text: linkText,
+          link_url: href
+        });
+      }
+    });
+
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
@@ -103,6 +138,14 @@
         (location ? 'Event Location: ' + location + '\n\n' : '') +
         'Message:\n' + message
       );
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'contact_form_submit', {
+          page_location: 'contact',
+          event_type: eventType,
+          has_location: Boolean(location)
+        });
+      }
 
       window.location.href = 'mailto:aischool@techdiva.io?subject=' + subject + '&body=' + body;
     });

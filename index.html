@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ayindri Banerjee — Speaker & Author</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K1HCBV2XRR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K1HCBV2XRR');
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap');
   :root{--pink:#ff67c7;--blue:#0aabde;--orange:#ff9671;--lpink:#ffecf8;--ink:#1a1a2e;--muted:#5a5a72;--light:#f8f6fa}
@@ -372,8 +379,43 @@
   const newsletterForm = document.getElementById('newsletterForm');
   const newsletterStatus = document.getElementById('newsletterStatus');
 
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link || typeof gtag !== 'function') return;
+
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    const linkText = (link.textContent || '').trim();
+    const isExternal = /^https?:\/\//i.test(href);
+    const isMailto = href.startsWith('mailto:');
+
+    if (href === 'contact.html') {
+      gtag('event', 'contact_navigation_click', {
+        page_location: 'index',
+        link_text: linkText,
+        link_url: href
+      });
+    }
+
+    if (isExternal || isMailto) {
+      gtag('event', 'outbound_click', {
+        page_location: 'index',
+        link_text: linkText,
+        link_url: href
+      });
+    }
+  });
+
   if (newsletterForm && newsletterStatus) {
     newsletterForm.addEventListener('submit', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'newsletter_subscribe_submit', {
+          page_location: 'index',
+          form_id: 'newsletterForm'
+        });
+      }
+
       newsletterStatus.textContent = 'Thank you — you are subscribed.';
       setTimeout(function () {
         newsletterForm.reset();
