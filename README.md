@@ -2,11 +2,11 @@
 
 ## Changelog
 
-- 2026-02-23: Added GA4 tracking (`G-K1HCBV2XRR`) on `index.html` and `contact.html`, including custom event instrumentation and documentation.
+- 2026-02-23: Added GA4 tracking (`G-GPMQS0N26D`) on `index.html` and `contact.html`, including custom event instrumentation and documentation.
 
 ## Google Analytics (GA4)
 
-This site uses GA4 with Measurement ID: `G-K1HCBV2XRR`.
+This site uses GA4 with Measurement ID: `G-GPMQS0N26D`.
 
 Tracking is installed in:
 - `index.html`
