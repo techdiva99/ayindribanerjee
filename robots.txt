@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://techdiva99.github.io/ayindribanerjee/sitemap.xml
