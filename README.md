@@ -54,3 +54,17 @@ After deployment:
 1. Open GA4 Realtime.
 2. Visit the website and perform a few actions (click links, submit forms).
 3. Confirm events appear in Realtime and DebugView.
+
+## Analytics Operations
+
+### Weekly cadence (30 minutes)
+1. Traffic pulse (5 min): compare users/sessions vs previous week.
+2. Funnel health (8 min): check `homepage -> contact_navigation_click -> contact_form_submit`.
+3. Channel quality (7 min): compare `contact_form_submit` by source/medium.
+4. Intent mix (5 min): review `event_type` trend (`Virtual` vs `In-person`).
+5. Action log (5 min): capture 1 insight and 1 action for the week.
+
+### Decision rules
+- If homepage traffic is high but `contact_navigation_click` is low: improve homepage CTA copy/placement.
+- If `contact_navigation_click` is high but `contact_form_submit` is low: simplify contact form messaging and trust cues.
+- If a source/medium drives higher inquiry rate: increase effort/content in that channel.
